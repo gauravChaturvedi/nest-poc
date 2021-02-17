@@ -1,0 +1,77 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  description: String!
+  rate: Float!
+  quantity: Float!
+}
+
+type ResourceModel {
+  id: String!
+  resourceNo: String!
+  description: String!
+  activity: ActivityModel!
+  paymentStatus: String!
+  currency: String!
+  taxRate: Float!
+  issueDate: String!
+  dueDate: String!
+  note: String!
+  items: [Item!]!
+  taxAmount: Float!
+  subTotal: Float!
+  total: String!
+  amountPaid: Float!
+  outstandingBalance: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ActivityModel {
+  id: String!
+  name: String!
+  email: String!
+  phone: String!
+  address: String!
+  resources: [ResourceModel!]
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Query {
+  resource(id: String!): ResourceModel!
+  resources: [ResourceModel!]!
+  activity(id: String!): ActivityModel!
+  activitys: [ActivityModel!]!
+}
+
+type Mutation {
+  createResource(resource: CreateResourceDTO!): ResourceModel!
+  createActivity(address: String, phone: String, email: String!, name: String!): ActivityModel!
+}
+
+input CreateResourceDTO {
+  activity: String!
+  resourceNo: String!
+  paymentStatus: String!
+  description: String!
+  currency: String!
+  taxRate: Float!
+  issueDate: DateTime!
+  dueDate: DateTime!
+  note: String!
+  items: [ItemDTO!]!
+}
+
+input ItemDTO {
+  description: String!
+  rate: Float!
+  quantity: Float!
+}
