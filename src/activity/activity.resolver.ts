@@ -1,6 +1,6 @@
 import { ResourceModel } from '../resource/resource.model';
 
-import { ResourceService } from '../resource/resource.service';
+import { ResourceService } from './../resource/resource.service';
 import { ActivityService } from './activity.service';
 import { ActivityModel } from './activity.model';
 import { Resolver, Mutation, Args, Query, ResolveField, Parent } from '@nestjs/graphql';
@@ -32,10 +32,8 @@ export class ActivityResolver {
   @Mutation(returns => ActivityModel)
   async createActivity(
     @Args('name') name: string,
-    @Args('email') email: string,
-    @Args('phone', { nullable: true }) phone: string,
-    @Args('address', { nullable: true }) address: string,
+    @Args('desc') desc: string,
   ): Promise<ActivityModel> {
-    return await this.activityService.create({ name, email, phone, address })
+    return await this.activityService.create({ name, desc })
   }
 }

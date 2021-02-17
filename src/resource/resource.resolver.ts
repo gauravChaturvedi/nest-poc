@@ -1,4 +1,4 @@
-import { ActivityModel } from './../activity/activity.model';
+import { ActivityModel } from '../activity/activity.model';
 import { ActivityService } from './../activity/activity.service';
 import { ResourceService } from './resource.service';
 import { Resolver, Query, Args, ResolveField, Parent, Mutation } from '@nestjs/graphql';

@@ -13,14 +13,7 @@ export class ActivityModel {
   name: string;
   @Field()
   @Column('text', { nullable: false })
-  email: string;
-  @Field()
-  @Column('varchar', { length: 15 })
-  phone: string;
-  @Field()
-  @Column('text')
-  address: string;
-
+  desc: string;
   @Field(type => [ResourceModel], { nullable: true })
   @OneToMany(type => ResourceModel, resource => resource.activity)
   resources: ResourceModel[]
